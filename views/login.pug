@@ -1,0 +1,21 @@
+extends layout
+
+block content
+    .panel.panel-default    
+        .panel-heading  
+            h1  Login
+        .panel-body
+            form.form-horizontal(action="/login", method="post")
+                .form-group
+                    label.col-sm-2.control-label(for="username") username:
+                    .col-sm-10.col-lg-3.col-md-4
+                        input#username.form-control(type="text", name="username", required)
+
+                .form-group
+                    label.col-sm-2.control-label(for="password") password:
+                    .col-sm-10.col-lg-3.col-md-4
+                        input#password.form-control(type="password", name="password", required)
+
+                .form-group
+                    .col-sm-offset-2.col-sm-10
+                        button.btn.btn-primary(type="submit") Login

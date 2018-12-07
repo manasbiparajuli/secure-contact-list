@@ -1,0 +1,40 @@
+extends layout
+
+block content   
+    .panel.panel-default
+        .panel-heading
+            h1 Search Results
+        .panel-body
+            .table-responsive
+                table.table.table-striped
+                    thead
+                        tr
+                            th  Full Name
+                            th  Address
+                            th  Contact by Phone
+                            th  Contact by Mail
+                            th  Contact by Email
+                            th  Longitude
+                            th  Latitude
+                            th &nbsp;
+                            th &nbsp;
+                    tbody
+                        -//check if the list is empty
+                        if (isNaN(list))
+                            each child in list
+                                tr
+                                    td  #{child.honorifics}.  #{child.firstName}  #{child.lastName}
+                                    td  #{child.street},  #{child.city},  #{child.state}  #{child.zip}
+                                    
+                                    -if(child.phone=="Yes"){value=child.phoneValue}else{value=child.phone}
+                                    td  #{value}
+
+                                    td  #{child.mail}
+
+                                    -if(child.email=="Yes"){val=child.emailValue}else{val=child.email}
+                                    td  #{val}
+                                    td  #{(child.longitude).toFixed(3)}
+                                    td  #{(child.latitude).toFixed(3)}
+                        else
+                            p   No matches found
+            a.btn.btn-primary(href="logout") Logout

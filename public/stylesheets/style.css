@@ -1,0 +1,52 @@
+body {
+    padding: 20px 10px 20px 10px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+a {
+    color: #00B7FF;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+h1 {
+    text-transform: uppercase;
+    text-shadow: 3px 2px lightgrey;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: 'Times New Roman', Times, serif;
+    color: green;
+}
+
+h2 {
+    font-family: monospace;
+    color: red;
+}
+
+#map-canvas {
+    margin-top: 1.5em;
+    width: 40%;
+    height: 500px;
+    border: 1px solid #2a0381;
+    padding: 0;
+}
+
+tr.clickable-row {
+    cursor: pointer;
+}

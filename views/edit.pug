@@ -1,0 +1,100 @@
+extends layout
+
+block content
+    .panel.panel-default   
+        .panel-heading  
+            h1  Edit Contact #{contacts.firstName}
+        .panel-body
+        
+            form.form-horizontal(action=`/contacts/edit/${contacts.id}`, method="post")
+                
+                .form-radio
+                    .col-sm-offset-2.col-sm-10
+                        .radio
+                            label.control-label
+                                -if(contacts.honorifics == "Mr") {ticked= true;} else {ticked=false;}
+                                input(type="radio", name="honorifics", value="Mr", checked=ticked)
+                                | Mr.
+                            label.control-label
+                                -if(contacts.honorifics == "Mrs") {ticked= true;} else {ticked=false;}
+                                input(type="radio", name="honorifics", value="Mrs", checked=ticked)
+                                | Mrs.
+                            label.control-label
+                                -if(contacts.honorifics == "Ms") {ticked= true;} else {ticked=false;}
+                                input(type="radio", name="honorifics", value="Ms", checked=ticked)
+                                | Ms.
+                            label.control-label
+                                -if(contacts.honorifics == "Dr") {ticked= true;} else {ticked=false;}
+                                input(type="radio", name="honorifics", value="Dr", checked=ticked)
+                                | Dr.
+                .form-group
+                    label.col-sm-2.control-label(for="firstName") First Name*:
+                    .col-sm-10
+                        input#firstName.form-control(type="text", placeholder="First Name" name="userFirstName", required, autofocus, value=contacts.firstName)
+
+                .form-group
+                    label.col-sm-2.control-label(for="lastName") Last Name*:
+                    .col-sm-10
+                        input#lastName.form-control(type="text", placeholder="Last Name" name="userLastName", required, value= contacts.lastName)
+
+                .form-group
+                    label.col-sm-2.control-label(for="streetName") Street:
+                    .col-sm-10
+                        input#streetName.form-control(type="text", name="streetName", value=contacts.street)
+
+                .form-group
+                    label.col-sm-2.control-label(for="cityName") City:
+                    .col-sm-10
+                        input#cityName.form-control(type="text", name="cityName", value=contacts.city)
+
+                .form-group
+                    label.col-sm-2.control-label(for="stateName") State:
+                    .col-sm-10
+                        select#state.form-control(name="selectState")
+                            -if(contacts.state == "NJ") {sel= true;} else {sel=false;}
+                            option(value="NJ", selected=sel) NJ
+                            -if(contacts.state == "NY") {sel= true;} else {sel=false;}
+                            option(value="NY", selected=sel) NY
+                            -if(contacts.state == "PA") {sel= true;} else {sel=false;}
+                            option(value="PA", selected=sel) PA
+                            -if(contacts.state == "CT") {sel= true;} else {sel=false;}
+                            option(value="CT", selected=sel) CT
+
+                .form-group 
+                    label.col-sm-2.control-label(for="zipCode") Zip Code:
+                    .col-sm-10
+                        input#zipCode.form-control(type="number", name="zipCode", min="0", max="99999", size="20", value=contacts.zip)
+
+                .form-group 
+                    label.col-sm-2.control-label(for="phoneNo") Phone No:
+                    .col-sm-10
+                        input#phoneNo.form-control(type="number", name="phoneNo", min="0", size="20", value=contacts.phoneValue)
+
+                .form-group 
+                    label.col-sm-2.control-label(for="userEmail") Email:
+                    .col-sm-10
+                        input#userEmail.form-control(type="email", name="userEmail", size="20", placeholder="example@example.com", value=contacts.emailValue)
+
+                .form-group
+                    label.col-sm-2.control-label(for="contactUser") How may we contact you? 
+                    .col-sm-10
+                        .checkbox
+                            label
+                                -if(contacts.phone == "Yes") {state= true;} else {state=false;}
+                                input#phone.checkbox-inline(type="checkbox" name="WayToContact", value="Phone", checked=state)
+                                | Phone
+                            label
+                                -if(contacts.mail == "Yes") {state= true;} else {state=false;}
+                                input#mail.checkbox-inline(type="checkbox" name="WayToContact", value="Mail", checked=state)
+                                | Mail
+                            label
+                                -if(contacts.email == "Yes") {state= true;} else {state=false;}
+                                input#Email.checkbox-inline(type="checkbox" name="WayToContact", value="Email", checked=state)
+                                | Email
+                            label
+                                input#any.checkbox-inline(type="checkbox" name="WayToContact", value="Any")
+                                | Any
+
+                .form-group
+                    .col-sm-offset-2.col-sm-10
+                        button.btn.btn-primary(type="submit") Submit 

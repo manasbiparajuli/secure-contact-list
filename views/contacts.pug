@@ -1,0 +1,61 @@
+extends layout
+
+block content   
+    .panel.panel-default
+        .panel-heading
+            h1 Contact List
+        .panel-body.container
+            p: a.btn.btn-info(href="/mailer") New Contact
+
+            -//check if there are documents in the collection
+            if (isNaN(list))
+
+                form.form-inline(action="/contacts/search", method="post")
+                    form-group
+                        label(for="searchbyfirst") First Name:
+                        input#searchbyfirst.form-control(type="text", placeholder="Search by First Name", name="searchbyfirst")
+                    form-group
+                        label(for="searchbylast") Last Name:
+                        input#searchbylast.form-control(type="text", placeholder="Search by Last Name", name="searchbylast")
+                    button.btn.btn-primary(type="submit") Search
+
+                .table-responsive
+                    table.table.table-striped.clickable
+                        thead
+                            tr
+                                th  Full Name
+                                th  Address
+                                th  Contact by Phone
+                                th  Contact by Mail
+                                th  Contact by Email
+                                th  Longitude
+                                th  Latitude
+                                th &nbsp;
+                                th &nbsp;
+                        tbody
+                            each child in list
+                                -var name= child.honorifics + " " + child.firstName + " " + child.lastName
+                                -var address = child.street + " " + child.city + " " + child.state + " " + child.zip
+                                -var email = child.emailValue
+                                -var phone = child.phoneValue
+                                
+                                tr.clickable-row(data-name=name, data-address= address, data-email= email, data-phone= phone, data-geolng=child.longitude, data-geolat=child.latitude)
+                                    td  #{child.honorifics}.  #{child.firstName}  #{child.lastName}
+                                    td  #{child.street},  #{child.city},  #{child.state}  #{child.zip}
+                                    
+                                    -if(child.phone=="Yes"){value=child.phoneValue}else{value=child.phone}
+                                    td  #{value}
+
+                                    td  #{child.mail}
+
+                                    -if(child.email=="Yes"){val=child.emailValue}else{val=child.email}
+                                    td  #{val}
+                                    td  #{(child.longitude).toFixed(3)}
+                                    td  #{(child.latitude).toFixed(3)}
+                                    th: a.btn.btn-warning(href=`/contacts/edit/${child.id}`) Edit
+                                    th: a.btn.btn-danger(href=`/contacts/delete/${child.id}`) Delete
+                    
+                    #map-canvas
+            else
+                p   Sorry, there are no contacts in the database
+            a.btn.btn-primary(href="logout") Logout

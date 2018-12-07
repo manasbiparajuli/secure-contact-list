@@ -1,0 +1,76 @@
+.form-radio
+    .col-sm-offset-2.col-sm-10
+        .radio
+            label.control-label
+                input(type="radio", name="honorifics", value="Mr", checked)
+                | Mr.
+            label.control-label
+                input(type="radio", name="honorifics", value="Mrs")
+                | Mrs.
+            label.control-label
+                input(type="radio", name="honorifics", value="Ms")
+                | Ms.
+            label.control-label
+                input(type="radio", name="honorifics", value="Dr")
+                | Dr.
+
+.form-group
+    label.col-sm-2.control-label(for="firstName") First Name*:
+    .col-sm-10
+        input#firstName.form-control(type="text", placeholder="First Name (required)" name="userFirstName", required, autofocus)
+
+.form-group
+    label.col-sm-2.control-label(for="lastName") Last Name*:
+    .col-sm-10
+        input#lasstName.form-control(type="text", placeholder="Last Name (required)" name="userLastName", required)
+
+.form-group
+    label.col-sm-2.control-label(for="streetName") Street:
+    .col-sm-10
+        input#streetName.form-control(type="text", name="streetName", placeholder="Street Name")
+
+.form-group
+    label.col-sm-2.control-label(for="cityName") City:
+    .col-sm-10
+        input#cityName.form-control(type="text", name="cityName", placeholder="City Name")
+
+.form-group
+    label.col-sm-2.control-label(for="stateName") State:
+    .col-sm-10
+        select#state.form-control(name="selectState")
+            option(value="NJ", selected) NJ
+            option(value="NY") NY
+            option(value="PA") PA
+            option(value="CT") CT
+
+.form-group 
+    label.col-sm-2.control-label(for="zipCode") Zip Code:
+    .col-sm-10
+        input#zipCode.form-control(type="number", name="zipCode", min="0", max="99999", size="20", placeholder="Zip Code")
+
+.form-group 
+    label.col-sm-2.control-label(for="phoneNo") Phone No:
+    .col-sm-10
+        input#phoneNo.form-control(type="number", name="phoneNo", min="0", size="20", placeholder="Phone Number")
+
+.form-group 
+    label.col-sm-2.control-label(for="userEmail") Email:
+    .col-sm-10
+        input#userEmail.form-control(type="email", name="userEmail", size="20", placeholder="example@example.com")
+
+.form-group
+    label.col-sm-2.control-label(for="contactUser") How may we contact you? 
+    .col-sm-10
+        .checkbox
+            label
+                input#phone.checkbox-inline(type="checkbox" name="WayToContact", value="Phone")
+                | Phone
+            label
+                input#mail.checkbox-inline(type="checkbox" name="WayToContact", value="Mail")
+                | Mail
+            label
+                input#Email.checkbox-inline(type="checkbox" name="WayToContact", value="Email")
+                | Email
+            label
+                input#any.checkbox-inline(type="checkbox" name="WayToContact", value="Any")
+                | Any

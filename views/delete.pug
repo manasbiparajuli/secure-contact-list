@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    .panel.panel-default    
+        .panel-heading  
+            h1  Delete #{contacts.firstName} #{contacts.lastName}'s contact information?
+        .panel-body
+            form(action=`/contacts/delete/${contacts.id}`, method="post")
+                
+                button.btn.btn-danger(type="submit") Delete Contact
+                a.btn.btn-default(style="margin-left:1em", href="/contacts") Cancel

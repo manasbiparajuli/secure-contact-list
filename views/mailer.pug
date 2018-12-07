@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    .panel.panel-default
+        .panel-heading
+            h1 New Contact
+        .panel-body
+            .row
+                form.form-horizontal(action="/mailer/posted", method="post", name="contactForm")
+                    include _form
+
+                    .form-group
+                        .col-sm-offset-2.col-sm-10
+                            button.btn.btn-primary(type="submit") Submit 
