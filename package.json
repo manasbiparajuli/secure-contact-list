@@ -7,6 +7,7 @@
     "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
+    "acorn": "^5.7.4",
     "async": "^3.2.0",
     "bcrypt": "^4.0.1",
     "body-parser": "~1.19.0",
@@ -19,19 +20,11 @@
     "fstream": "^1.0.12",
     "lodash": "^4.17.15",
     "method-override": "^3.0.0",
-<<<<<<< HEAD
     "mongodb": "^3.5.5",
     "morgan": "^1.10.0",
     "node-geocoder": "^3.27.0",
     "npm": "^6.14.4",
     "passport": "^0.4.1",
-=======
-    "mongodb": "^3.3.0",
-    "morgan": "~1.9.1",
-    "node-geocoder": "^3.23.0",
-    "npm": "^6.13.4",
-    "passport": "^0.4.0",
->>>>>>> 770496f0eb7301742bb6fda1ff3c0d24119ede0e
     "passport-local": "^1.0.0",
     "pug": "^2.0.4",
     "serve-favicon": "~2.5.0"
